@@ -1,18 +1,37 @@
 # docker_django_mssql
 
-<h2>Description</h2>
-<p>This docker file is django web to connect mssql in ubuntu
+###Description
+
+\
+This docker file is django web to connect mssql in ubuntu
 and bound a port 8002:8002, other machines can access by hostname.
-<code>http://hostname:port/</code>
-</p>
+'http://hostname:port/'
+\
 
-<h2>Enviroment</h2>
-<ul>
-<li>Ubuntu 20.04</li>
-<li>Python3.8.2</li>
-</ul>
-<hr>
 
-<h2>Setting</h2>
-<p>For connecting by hostname need to install samba package in ubuntu host computer</p>
-<code>sudo apt-get install samba</code>
+###Enviroment
+
+-Ubuntu 20.04
+-Python3.8.2
+
+###Setting
+\For connecting by hostname need to install samba package in ubuntu host computer\
+'sudo apt-get install samba'
+\Whole web folder need to be added into catweb folder\
+\Need to modify **myuwsgi.ini** and **mynginx.conf**\
+```
+location /static{
+    alias /Lab_Web_Django/Cat_Auto_Web/static;
+}
+```
+```
+# Django-related settings 
+# the base directory (full path) 
+chdir            = /Lab_Web_Django/Cat_Auto_Web
+ # Django's wsgi file 
+module           = Cat_Auto_Web.wsgi
+ # the virtualenv (full path) 
+#home             = /path/to/virtualenv
+```
+###Run
+\After setting run 'docker run -p 8002:8002 image bash run.sh'\
