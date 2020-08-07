@@ -1,0 +1,21 @@
+FROM nginx
+MAINTAINER DavidTsai <david.tsai@hp.com>
+RUN apt-get update
+RUN apt-get install -y nano
+RUN apt-get install -y python3
+RUN apt-get install -y python3-pip
+RUN apt-get install -y unixodbc-dev
+RUN apt-get install -y wget
+# RUN apt-get install -y freetds-dev
+# RUN apt-get install -y tdsodbc
+# RUN apt-get install -y libsybdb5
+# RUN apt-get install -y libct4libdbd-freetds
+# RUN apt-get install -y freetds-common
+# RUN apt-get install -y freetds-bin 
+
+
+ADD catweb /
+RUN bash install.sh
+RUN pip3 install -r Lab_Web_Django/requirements.txt
+# RUN cp -f odbcinst.ini /etc/odbcinst.ini
+
