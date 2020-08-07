@@ -4,6 +4,7 @@
 
 This docker file is django web to connect mssql in ubuntu
 and bound a port 8002:8002, other machines can access by hostname.
+`http://<hostname>:<port>`
 
 # Enviroment
 
